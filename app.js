@@ -48,8 +48,8 @@ app.post('/synthesize', async (req, res) => {
 
     const audioBuffer = Buffer.from(response.data, 'binary')
     const base64Audio = audioBuffer.toString('base64')
-    const audioDataURL = `data:audio/mpeg;base64,${base64Audio}`
-    res.send({ audioDataURL })
+    const audioDataURI = `data:audio/mpeg;base64,${base64Audio}`
+    res.send({ audioDataURI })
   } catch (error) {
     console.error(error)
     res.status(500).send('Error occurred while processing the request.')
