@@ -7,7 +7,14 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 
 app.post('/synthesize', async (req, res) => {
-  const { text = null, voiceID = '21m00Tcm4TlvDq8ikWAM' } = req.body
+  const {
+    text = null,
+    voiceID = '21m00Tcm4TlvDq8ikWAM',
+    voice_settings = {
+      stability: 0,
+      similarity_boost: 0,
+    },
+  } = req.body
 
   if (!text) {
     res.status(400).send({ error: 'Text is required.' })
@@ -19,10 +26,7 @@ app.post('/synthesize', async (req, res) => {
       `https://api.elevenlabs.io/v1/text-to-speech/${voiceID}`,
       {
         text: text,
-        voice_settings: {
-          stability: 0,
-          similarity_boost: 0,
-        },
+        voice_settings: voice_settings,
       },
       {
         headers: {
