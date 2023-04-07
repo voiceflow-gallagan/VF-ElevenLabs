@@ -11,8 +11,8 @@ app.post('/synthesize', async (req, res) => {
     text = null,
     voiceID = '21m00Tcm4TlvDq8ikWAM',
     voice_settings = {
-      stability: 0,
-      similarity_boost: 0,
+      stability: 0.8,
+      similarity_boost: 0.8,
     },
   } = req.body
 
