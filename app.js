@@ -8,7 +8,7 @@ app.use(express.json())
 
 app.post('/synthesize', async (req, res) => {
   const text = req.body.text || null
-  const voiceID = req.body.voiceID || '21m00Tcm4TlvDq8ikWAM'
+  const voice = req.body.voice || '21m00Tcm4TlvDq8ikWAM'
   const voice_settings = req.body.voice_settings || {
     stability: 0.8,
     similarity_boost: 0.8,
@@ -21,7 +21,7 @@ app.post('/synthesize', async (req, res) => {
 
   try {
     const response = await axios.post(
-      `https://api.elevenlabs.io/v1/text-to-speech/${voiceID}`,
+      `https://api.elevenlabs.io/v1/text-to-speech/${voice}`,
       {
         text: text,
         voice_settings: voice_settings,
