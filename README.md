@@ -2,6 +2,8 @@
 
 This Node.js application uses the Eleven Labs API to synthesize text to speech. It takes in text and voice settings as input and returns the synthesized audio in a data URI format you can use in an Audio step in your Assistant.
 
+Loom video: https://www.loom.com/share/a9a0abf118594ba590386024c905596f
+
 ## Prerequisites
 
 - Node.js installed on your machine
