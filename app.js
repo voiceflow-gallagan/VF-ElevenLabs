@@ -8,25 +8,25 @@ app.use(express.json())
 
 app.post('/synthesize', async (req, res) => {
   const text = req.body.text
-  if (text === undefined || text === null || text === '' || text === 0) {
+  if (text === undefined || text === null || text === '' || text == 0) {
     res.status(400).send({ error: 'Text is required.' })
     return
   }
 
   const voice =
-    req.body.voice === 0
+    req.body.voice == 0
       ? '21m00Tcm4TlvDq8ikWAM'
       : req.body.voice || '21m00Tcm4TlvDq8ikWAM'
 
   const voice_settings =
-    req.body.voice_settings === 0
+    req.body.voice_settings == 0
       ? {
-          stability: 0.8,
-          similarity_boost: 0.8,
+          stability: 0,
+          similarity_boost: 0,
         }
       : req.body.voice_settings || {
-          stability: 0.8,
-          similarity_boost: 0.8,
+          stability: 0,
+          similarity_boost: 0,
         }
 
   try {
