@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 
 app.post('/synthesize', async (req, res) => {
-  const { text, voice, voice_settings } = req.body
+  const text = req.body.text
   if (text === undefined || text === null || text === '' || text === 0) {
     res.status(400).send({ error: 'Text is required.' })
     return
