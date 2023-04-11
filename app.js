@@ -8,7 +8,8 @@ app.use(express.json())
 
 app.post('/synthesize', async (req, res) => {
   const text = req.body.text
-  if (text === undefined || text === null || text === '' || text == 0) {
+
+  if (!text) {
     res.status(400).send({ error: 'Text is required.' })
     return
   }
