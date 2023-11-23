@@ -44,7 +44,7 @@ app.post('/synthesize', async (req, res) => {
     const response = await axios.post(
       `https://api.elevenlabs.io/v1/text-to-speech/${voice}`,
       {
-        text: text,
+        text: text.replace(/"/g, '\\"'),
         model_id: model_id,
         voice_settings: voice_settings,
       },
