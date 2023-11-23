@@ -20,7 +20,10 @@ app.post('/synthesize', async (req, res) => {
     res.status(400).send({ error: 'Text is required.' })
     return
   }
-
+  const model_id =
+    req.body.model_id == 0
+      ? 'eleven_multilingual_v2'
+      : req.body.model_id || 'eleven_multilingual_v2'
   const voice =
     req.body.voice == 0
       ? '21m00Tcm4TlvDq8ikWAM'
@@ -29,12 +32,12 @@ app.post('/synthesize', async (req, res) => {
   const voice_settings =
     req.body.voice_settings == 0
       ? {
-          stability: 0,
-          similarity_boost: 0,
+          stability: 0.75,
+          similarity_boost: 0.75,
         }
       : req.body.voice_settings || {
-          stability: 0,
-          similarity_boost: 0,
+          stability: 0.75,
+          similarity_boost: 0.75,
         }
 
   try {
@@ -42,6 +45,7 @@ app.post('/synthesize', async (req, res) => {
       `https://api.elevenlabs.io/v1/text-to-speech/${voice}`,
       {
         text: text,
+        model_id: model_id,
         voice_settings: voice_settings,
       },
       {
